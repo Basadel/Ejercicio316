@@ -1,10 +1,7 @@
-import java.io.BufferedReader;
-import java.util.Scanner;
+import java.time.LocalDate;
 
 public class FrecuenciasCardiacas {
 
-    Scanner sc;
-    BufferedReader br;
 
     private String nombre;
     private String apellido;
@@ -21,27 +18,29 @@ public class FrecuenciasCardiacas {
         this.dia = dia;
     }
 
-    public int calcularFrecuenciaCardiaca(int edad){
-    int frecuenciaCardiaca = 200 - this.edad;
-    return frecuenciaCardiaca;
+    public int calcularFrecuenciaCardiaca(){
+    return 220 - this.edad;
+    }
+
+    public double calcularFrecuenciaCardiacaEsperadaMin(){
+        return calcularFrecuenciaCardiaca() * 0.50;
+    }
+
+    public double calcularFrecuenciaCardiacaEsperadaMax(){
+        return calcularFrecuenciaCardiaca() * 0.85;
     }
 
 
-    public int calcularEdad(int anioActual, int mesActual, int diaActual){
-       int fechaActualDias = anioActual * 365 + mesActual * 30 + diaActual;
+    public int calcularEdad(){
+       LocalDate hoy = LocalDate.now();
+       int anioActual = hoy.getYear();
+       int mesActual = hoy.getMonthValue();
+       int diaActual = hoy.getDayOfMonth();
+        int fechaActualDias = anioActual * 365 + mesActual * 30 + diaActual;
        int fechaNacimientoDias = this.anio * 365 + this.mes * 30 + this.dia;
-       int edadDias = fechaActualDias + fechaNacimientoDias;
+       int edadDias = fechaActualDias - fechaNacimientoDias;
        this.edad = edadDias / 365;
        return edad;
-    }
-
-
-
-
-    public void setFechaNacimiento(int anio, int mes, int dia){
-        this.anio = anio;
-        this.mes = mes;
-        this.dia = dia;
     }
 
     public String getNombre() {

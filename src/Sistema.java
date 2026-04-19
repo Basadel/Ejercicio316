@@ -18,11 +18,20 @@ public class Sistema {
         String apellido = sc.next();
         System.out.println("Ingrese el año de nacimiento del paciente: ");
         int anio = sc.nextInt();
-        System.out.println("Ingrese el mes de nacimiento del paciente: ");
+        System.out.println("Ingrese el mes de nacimiento del paciente (1 - 12): ");
         int mes = sc.nextInt();
-        System.out.println("Ingrese el dia de nacimiento del paciente: ");
+        System.out.println("Ingrese el dia de nacimiento del paciente (1 - 30): ");
         int dia = sc.nextInt();
-        FrecuenciasCardiacas frecuenciasCardiacas = new FrecuenciasCardiacas(nombre,apellido,anio,mes,dia);
-        return frecuenciasCardiacas;
+        return new FrecuenciasCardiacas(nombre,apellido,anio,mes,dia);
+    }
+
+    public void imprimirPaciente(FrecuenciasCardiacas frecuenciasCardiacas){
+        System.out.println("Datos del Paciente: ");
+        System.out.println("Nombre: "+frecuenciasCardiacas.getNombre());
+        System.out.println("Apellido: "+frecuenciasCardiacas.getApellido());
+        System.out.println("Edad del Paciente: "+frecuenciasCardiacas.calcularEdad());
+        System.out.println("Frecuencia Cardiaca del Paciente: "+frecuenciasCardiacas.calcularFrecuenciaCardiaca());
+        System.out.println("Frecuencia Cardiaca Esperada del Paciente Minima: "+frecuenciasCardiacas.calcularFrecuenciaCardiacaEsperadaMin());
+        System.out.println("Frecuencia Cardiaca Esperada del Paciente Maxima: "+frecuenciasCardiacas.calcularFrecuenciaCardiacaEsperadaMax());
     }
 }
